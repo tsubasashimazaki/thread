@@ -15,7 +15,7 @@
   </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand ml-5" href="#">もくもく掲示板<i class="fas fa-desktop topIcon"></i></a>
+  <a class="navbar-brand ml-5" href="top.php">もくもく掲示板<i class="fas fa-desktop threadIcon"></i></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -23,10 +23,10 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav ml-auto mr-5 mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link" href="#">ログイン</a>
+        <a class="nav-link" href="login.php">ログイン</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">ログアウト</a>
+        <a class="nav-link" href="logout.php">ログアウト</a>
       </li>
     </ul>
   </div>

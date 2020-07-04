@@ -1,10 +1,62 @@
+body {
 
-/* navbar Start */
-.topIcon {
+    font-family: monospace, sans-serif;
+}
+p {
+    font-family: sans-serif;
+    font-size: 20px;
+}
+h2 {
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+/* ーーーー　header.php　ーーーーー */
+.threadIcon {
     margin-left: .5rem;
 }
 .bg-light {
-    background-color: bisque!important;
+    background-color: #4699ca!important;
+}
+/* ーーーー　top.php　ーーーーー */
+.main {
+    background-image: url(../img/bg-ground.png);
+    background-size: cover;
+    padding: 10rem 0 5rem 0;
+}
+.row {
+    margin-top: 3rem;
+}
+#service {
+    padding: 3rem 0;
+}
+.add {
+    display: block;
+    text-align: center;
+}
+.fotter{
+    background-color: #4699ca;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    margin: 0;
 }
 
-/* add.php Start */
+
+/* ーーーー　add.php　ーーーーー */
+.btn-primary {
+    background-color: #4699ca;
+    border-color: #4699ca;
+}
+
+
+
+@media (max-width: 600px) {
+    .topTitle{
+        font-size: 2rem;
+    }
+    .main {
+      background-position: center;
+      padding: 1rem;
+    }
+}
