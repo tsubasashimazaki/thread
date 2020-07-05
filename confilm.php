@@ -2,7 +2,7 @@
 session_start();
 require('templates/header.php');
 
-if (!isset($_SESSION['join'])) { //直接confilmがリクエストされたら->前の画面からセッションで情報が入ってなければ
+if (!isset($_SESSION['add'])) { //直接confilmがリクエストされたら->前の画面からセッションで情報が入ってなければ
     header('Location: top.php'); //トップ画面に戻す
 }
 ?>
@@ -16,11 +16,11 @@ if (!isset($_SESSION['join'])) { //直接confilmがリクエストされたら->
 
         <div class="form-group ">
             <label for="inputName" class="font-weight-bold">ニックネーム</label>
-            <p><?php echo(htmlspecialchars($_SESSION['join']['name'], ENT_QUOTES)); ?></p>
+            <p><?php echo(htmlspecialchars($_SESSION['add']['name'], ENT_QUOTES)); ?></p>
         </div>
         <div class="form-group ">
             <label for="inputEmail" class="font-weight-bold">メールアドレス</label>
-            <p><?php echo(htmlspecialchars($_SESSION['join']['email'])); ?></p>
+            <p><?php echo(htmlspecialchars($_SESSION['add']['email'])); ?></p>
         </div>
         <div class="form-group">
             <label for="inputPassword" class="font-weight-bold">パスワード</label>(パスワードは表示されません)

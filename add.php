@@ -15,17 +15,28 @@ if (!empty($_POST)) { //$_POSTがemptyでなければvalidationを返す、ボ�
     if (strlen($_POST['password']) <= 8) {
         $error['password'] = 'length';
     }
+
+    $fileName = $_FILES['image']['name'];
+    if (!empty($fileName)) { //画像が何かしらつけていたら
+        $strlenCut = substr($fileName, -3); //ファイル名の語尾3文字を切り取り判別 substr(string, 切り取るint)
+        if ($srlenCut != 'peg' && $srlenCut != 'png' && $srlenCut != 'jpg' && $srlenCut != 'gif') {
+            $error['image'] = 'type'; //もし指定されたタイプでなければtypeError
+        }
+    }
+
     if (empty($error)){
         $image = date('YmdHis') . $_FILES['image']['name']; //投稿された画像の時間とファイル名を取得
-        
-        $_SESSION['join'] = $_POST; // errorがなければ＄POSTの内容をjoinの配列に追加
+        move_uploaded_file($_FILES['image']['tmp_name'], //FILES[]はinputのfileと連動。第一引数には一時的に保管
+        './user_profile/' . $image); //第二引数には保管場所指定
+        $_SESSION['add'] = $_POST; // errorがなければ＄POSTの内容をaddの配列に追加
+        $_SESSION['add']['image'] = $image; // セッションのadd配列のimage配列にファイル名を指定
         header('Location: confilm.php');//上記errorがなければ確認画面(confilm.php)
         exit(); // add.phpから脱出
     }
 }
 
-if ($_REQUEST['action'] == 'historyBack' && isset($_SESSION['join'])) {
-    $_POST = $_SESSION['join'];
+if ($_REQUEST['action'] == 'historyBack' && isset($_SESSION['add'])) {
+    $_POST = $_SESSION['add'];
 }
 ?>
 
@@ -64,8 +75,11 @@ if ($_REQUEST['action'] == 'historyBack' && isset($_SESSION['join'])) {
                 <?php endif; ?>
             </div>
             <div class="form-group">
-                <label for="formControlFile1">プロフィール画像選択</label>
-                <input type="file" name="image" class="form-control-file" id="formControlFile1">
+                <label for="formControlFile" class="font-weight-bold">プロフィール画像選択</label>
+                <input type="file" name="image" class="form-control-file" id="formControlFile">
+                <?php if ($error['image'] === 'type'): ?>
+                    <p class="error">プロフィール画像は正しい形式で登録してください。恐れ入りますが、もう一度正しい形式で入力してください</p>
+                <?php endif; ?>
             </div>
             
             <button type="submit" class="btn btn-primary mt-3">入力内容を確認する</button>

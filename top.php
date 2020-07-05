@@ -16,7 +16,7 @@
                 <p class="pt-5">さまざまな理由があると思います。</p>
             </div>
             <div class="col-md-6">
-                <img src="img/about.jpg" class="w-100" alt="">
+                <img src="img/about4.png" class="w-100" alt="">
             </div>
         </div><!-- top_wrapper -->
         <div class="row py-5">
