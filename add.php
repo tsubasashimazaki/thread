@@ -1,6 +1,6 @@
 <?php 
 session_start(); //画面を移動しても情報を記録しておく
-
+require('templates/database.php');
 if (!empty($_POST)) { //$_POSTがemptyでなければvalidationを返す、ボタンが押されたかの判別は$_POSTに値が入っているかで判断
     // input validation
     if ($_POST['name'] === '') { 
@@ -24,8 +24,21 @@ if (!empty($_POST)) { //$_POSTがemptyでなければvalidationを返す、ボ�
         }
     }
 
+    //ユーザー重複チェック----------
+    if (empty($error)) { //エラーがあるかどうかはemptyか
+        $member = $db->prepare('SELECT COUNT(*) as cnt FROM members WHERE email=?');
+        $member->execute(array($_POST['email'])); //指定されたテーブルから$POSTで入力されたemailを代入
+        $memberMail = $member->fetch(); // 登録されているmemberテーブルから1件のデータを取り出す
+        if ($memberMail['cnt'] > 0) {  
+
+            $error['email'] = 'deplication';
+            
+        }
+
+    }
+
     if (empty($error)){
-        $image = date('YmdHis') . $_FILES['image']['name']; //投稿された画像の時間とファイル名を取得
+        $image = date('YmdHis') . $_FILES['image']['name']; //投稿された画像の時間とファイル名を取得してデータの重複を避ける　もっとセキュリティを高
         move_uploaded_file($_FILES['image']['tmp_name'], //FILES[]はinputのfileと連動。第一引数には一時的に保管
         './user_profile/' . $image); //第二引数には保管場所指定
         $_SESSION['add'] = $_POST; // errorがなければ＄POSTの内容をaddの配列に追加
@@ -61,6 +74,9 @@ if ($_REQUEST['action'] == 'historyBack' && isset($_SESSION['add'])) {
                 placeholder="メールアドレスを入力してください" name="email" value="<?php echo(htmlspecialchars($_POST['email'], ENT_QUOTES)); ?>">
                 <?php if ($error['email'] === 'blank'): ?>
                     <p class="error">メールアドレスは必須です</p>
+                <?php endif; ?>
+                <?php if ($error['email'] === 'deplication'): ?>
+                    <p class="error">このメールアドレスは既に使用されています</p>
                 <?php endif; ?>
             </div>
             <div class="form-group">

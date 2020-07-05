@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require('database.php');
+require('templates/database.php');
 
 if (!isset($_SESSION['add'])) { //直接confilmがリクエストされたら->前の画面からセッションで情報が入ってなければ
     header('Location: top.php'); //トップ画面に戻す
@@ -48,7 +48,7 @@ if (!empty($_POST)) { //送信ボタンを押したかの判断
             </div>
 
         <button type="submit" class="btn btn-success mt-3"><a href="add.php?action=historyBack" class="historyBack">一つ前の画面に戻る</a></button>
-        <button type="submit" class="btn btn-primary mt-3">こちらの内容で確認する</button>
+        <button type="submit" class="btn btn-primary mt-3">こちらの内容で登録する</button>
         </form>
     </div>
 </div>
