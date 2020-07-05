@@ -22,11 +22,14 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav ml-auto mr-5 mt-2 mt-lg-0">
-      <li class="nav-item">
-        <a class="nav-link ml-5" href="login.php">ログイン</a>
+    <li class="nav-item">
+        <a class="nav-link ml-3" href="add.php">新規登録</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link ml-5" href="logout.php">ログアウト</a>
+        <a class="nav-link ml-3" href="login.php">ログイン</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link ml-3" href="logout.php">ログアウト</a>
       </li>
     </ul>
   </div>
