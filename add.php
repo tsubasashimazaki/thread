@@ -1,4 +1,6 @@
 <?php 
+session_start(); //画面を移動しても情報を記録しておく
+
 if (!empty($_POST)) { //$_POSTがemptyでなければvalidationを返す、ボタンが押されたかの判別は$_POSTに値が入っているかで判断
     // input validation
     if ($_POST['name'] === '') { 
@@ -14,11 +16,17 @@ if (!empty($_POST)) { //$_POSTがemptyでなければvalidationを返す、ボ�
         $error['password'] = 'length';
     }
     if (empty($error)){
+        $image = date('YmdHis') . $_FILES['image']['name']; //投稿された画像の時間とファイル名を取得
+        
+        $_SESSION['join'] = $_POST; // errorがなければ＄POSTの内容をjoinの配列に追加
         header('Location: confilm.php');//上記errorがなければ確認画面(confilm.php)
         exit(); // add.phpから脱出
     }
 }
 
+if ($_REQUEST['action'] == 'historyBack' && isset($_SESSION['join'])) {
+    $_POST = $_SESSION['join'];
+}
 ?>
 
 <!-- header読み込み -->
@@ -27,36 +35,40 @@ if (!empty($_POST)) { //$_POSTがemptyでなければvalidationを返す、ボ�
 <div id="content" class="container">
 <h1 class="text-center mt-3 font-weight-bold">会員登録</h1>
     <div id="add_wrapper" class="row">
-        <form action="" method="post" class="col-md-8 ml-auto mr-auto">
-        <div class="form-group ">
-            <label for="inputName" class="font-weight-bold">ニックネーム</label>
-            <input type="text" class="form-control" id="inputName" 
-            placeholder="お好きなニックネームを入力してください" name="name" value="<?php echo(htmlspecialchars($_POST['name'], ENT_QUOTES));?>">
-            <?php if($error['name'] === 'blank'): ?>
-                <p class="error">ニックネームは必須です</p>
-            <?php endif; ?>
-        </div>
-        <div class="form-group ">
-            <label for="inputEmail" class="font-weight-bold">メールアドレス</label>
-            <input type="email" class="form-control" id="inputEmail" 
-            placeholder="メールアドレスを入力してください" name="email" value="<?php echo(htmlspecialchars($_POST['email'], ENT_QUOTES)); ?>">
-            <?php if ($error['email'] === 'blank'): ?>
-                <p class="error">メールアドレスは必須です</p>
-            <?php endif; ?>
-        </div>
-        <div class="form-group">
-            <label for="inputPassword" class="font-weight-bold">パスワード</label>
-            <input type="password" class="form-control" id="inputPassword" 
-            placeholder="パスワードを8文字以上で入力してください" name="password" value="<?php echo(htmlspecialchars($_POST['password'], ENT_QUOTES)); ?>">
-            <?php if ($error['password'] === 'blank'): ?>
-                <p class="error">パスワードは必須です</p>
-            <?php endif; ?>
-            <?php if ($error['password'] === 'length'): ?>
-                <p class="error">パスワードは8文字以上で入力してください</p>
-            <?php endif; ?>
-        </div>
-        
-        <button type="submit" class="btn btn-primary mt-3">入力内容を確認する</button>
+        <form action="" method="post" enctype="multipart/form-data" class="col-md-8 ml-auto mr-auto">
+            <div class="form-group ">
+                <label for="inputName" class="font-weight-bold">ニックネーム</label>
+                <input type="text" class="form-control" id="inputName" 
+                placeholder="お好きなニックネームを入力してください" name="name" value="<?php echo(htmlspecialchars($_POST['name'], ENT_QUOTES));?>">
+                <?php if($error['name'] === 'blank'): ?>
+                    <p class="error">ニックネームは必須です</p>
+                <?php endif; ?>
+            </div>
+            <div class="form-group ">
+                <label for="inputEmail" class="font-weight-bold">メールアドレス</label>
+                <input type="email" class="form-control" id="inputEmail" 
+                placeholder="メールアドレスを入力してください" name="email" value="<?php echo(htmlspecialchars($_POST['email'], ENT_QUOTES)); ?>">
+                <?php if ($error['email'] === 'blank'): ?>
+                    <p class="error">メールアドレスは必須です</p>
+                <?php endif; ?>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" class="font-weight-bold">パスワード</label>
+                <input type="password" class="form-control" id="inputPassword" 
+                placeholder="パスワードを8文字以上で入力してください" name="password" value="<?php echo(htmlspecialchars($_POST['password'], ENT_QUOTES)); ?>">
+                <?php if ($error['password'] === 'blank'): ?>
+                    <p class="error">パスワードは必須です</p>
+                <?php endif; ?>
+                <?php if ($error['password'] === 'length'): ?>
+                    <p class="error">パスワードは8文字以上で入力してください</p>
+                <?php endif; ?>
+            </div>
+            <div class="form-group">
+                <label for="formControlFile1">プロフィール画像選択</label>
+                <input type="file" name="image" class="form-control-file" id="formControlFile1">
+            </div>
+            
+            <button type="submit" class="btn btn-primary mt-3">入力内容を確認する</button>
         </form>
     </div>
 </div>

@@ -2,7 +2,7 @@
 <section id="top">
     <div class="main text-center mt-5">
         <h1 class="topTitle mb-5 display-4 text-white">毎日の学習成果を記録して<br>モチベーションを高めよう</h1>
-        <p class="display-5 mb-5 text-white">学習すること、学習したこと、どんなことが理解できたかなどを<br>アウトプットすることで理解度を深めていくのがもくもく掲示板です</p>
+        <p class="display-5 mb-5 text-white">学習すること、学習したこと、どんなことが理解できたかなどを<br>アウトプットすることで理解度を深めていこう</p>
         <a href="add.php"><button class="btn btn-primary btn-lg">無料で使ってみる</button></a>
     </div>
 </section>
