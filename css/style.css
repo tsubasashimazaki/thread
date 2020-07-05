@@ -1,6 +1,7 @@
 body {
-
-    font-family: monospace, sans-serif;
+    height: 100vh;
+    font-family:  sans-serif;
+    background-color: #dbdef0;
 }
 p {
     font-family: sans-serif;
@@ -18,6 +19,10 @@ h2 {
 .bg-light {
     background-color: #4699ca!important;
 }
+.navbar-brand {
+    color: #fff!important;
+}
+
 /* ーーーー　top.php　ーーーーー */
 .main {
     background-image: url(../img/bg-ground.png);
@@ -42,11 +47,16 @@ h2 {
     margin: 0;
 }
 
-
 /* ーーーー　add.php　ーーーーー */
 .btn-primary {
     background-color: #4699ca;
     border-color: #4699ca;
+}
+
+/* ーーーー　validation　ーーーーー */
+.error {
+    color: tomato;
+    font-size: 14px;
 }
 
 
