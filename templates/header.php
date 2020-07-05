@@ -23,7 +23,7 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav ml-auto mr-5 mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link ml-5" href="login.php">ログイン</a>
+        <a class="nav-link ml-5" href="add.php">ログイン</a>
       </li>
       <li class="nav-item">
         <a class="nav-link ml-5" href="logout.php">ログアウト</a>
