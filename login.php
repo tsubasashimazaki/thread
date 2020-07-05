@@ -3,6 +3,13 @@ session_start(); //画面を移動しても情報を記録しておく
 require('templates/database.php');
 
 if(!empty($_POST)) {
+    if ($_POST['email'] === '') {
+        $error['email'] = 'blank';
+    }
+    if ($_POST['password'] === '') {
+        $error['password'] = 'blank';
+    }
+
     if ($_POST['email'] !== '' && $_POST['password'] !== '') {
         $loginInfo = $db->prepare('SELECT * FROM members WHERE email=? AND password=?');
         $loginInfo->execute(array(
@@ -16,9 +23,12 @@ if(!empty($_POST)) {
             // $_SESSION['id'] = $memberInfo['id'];
             header('Location: index.php');
             exit();
+        }else {
+            $error['login'] = 'mistake';
         }
     }
 }
+
 ?>
 
 <!-- header読み込み -->
@@ -33,10 +43,10 @@ if(!empty($_POST)) {
                 <input type="email" class="form-control" id="inputEmail" 
                 placeholder="メールアドレスを入力してください" name="email" value="<?php echo(htmlspecialchars($_POST['email'], ENT_QUOTES)); ?>">
                 <?php if ($error['email'] === 'blank'): ?>
-                    <p class="error">メールアドレスは必須です</p>
+                    <p class="error">メールアドレスを正しく入力してください</p>
                 <?php endif; ?>
-                <?php if ($error['email'] === 'deplication'): ?>
-                    <p class="error">このメールアドレスは既に使用されています</p>
+                <?php if ($error['login'] === 'mistake'): ?>
+                    <p class="error">メールアドレスかパスワードが異なります</p>
                 <?php endif; ?>
             </div>
             <div class="form-group">
@@ -44,10 +54,10 @@ if(!empty($_POST)) {
                 <input type="password" class="form-control" id="inputPassword" 
                 placeholder="パスワードを入力してください" name="password" value="<?php echo(htmlspecialchars($_POST['password'], ENT_QUOTES)); ?>">
                 <?php if ($error['password'] === 'blank'): ?>
-                    <p class="error">パスワードは必須です</p>
+                    <p class="error">パスワードを正しく入力してください</p>
                 <?php endif; ?>
-                <?php if ($error['password'] === 'length'): ?>
-                    <p class="error">パスワードは8文字以上で入力してください</p>
+                <?php if ($error['login'] === 'mistake'): ?>
+                    <p class="error">メールアドレスかパスワードが異なります</p>
                 <?php endif; ?>
             </div>
             <button type="submit" class="btn btn-primary mt-3">ログインする</button>

@@ -17,11 +17,15 @@ if (!empty($_POST)) { //$_POSTがemptyでなければvalidationを返す、ボ�
     }
 
     $fileName = $_FILES['image']['name'];
+   
     if (!empty($fileName)) { //画像が何かしらつけていたら
         $strlenCut = substr($fileName, -3); //ファイル名の語尾3文字を切り取り判別 substr(string, 切り取るint)
         if ($strlenCut != 'peg' && $strlenCut != 'png' && $strlenCut != 'jpg' && $strlenCut != 'gif') {
             $error['image'] = 'type'; //もし指定されたタイプでなければtypeError
+           
         }
+    } else {
+      
     }
 
     //ユーザー重複チェック----------
