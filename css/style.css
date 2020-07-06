@@ -6,6 +6,9 @@ body {
 }
 p {font-family: sans-serif;font-size: 20px;}
 h2 {font-family: sans-serif;font-weight: bold;}
+ul {
+    list-style: none;
+}
 img{
     width: 100%;
     height: auto;
@@ -18,9 +21,12 @@ img{
 .bg-light {
     background-color: #4699ca!important;
 }
+
 .navbar-brand {
     color: #fff!important;
+
 }
+
 
 /* ------------------ top.php ------------------ー */
 .main {
@@ -51,16 +57,63 @@ img{
     background-color: #4699ca;
     border-color: #4699ca;
 }
+
+
 /* ------------------ confirm.php ------------------ー */
 .historyBack {
     color: #fff!important;
     text-decoration: none!important;
 }
+
+
 /* ------------------ login.php ------------------ー */
 .addMember {
     display: block;
     padding-top: 1.5rem;
 }
+
+
+/* ------------------ thread.php ------------------ー */
+.threadContent {
+    padding-top: 5rem;
+}
+.threadArea {
+    padding-left: 0;
+    background-color: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.threadMessages {
+    display: flex;
+    align-items: center;
+}
+.threadMessages img {
+    width: 5%;
+    
+}
+
+.threadMessages .messageTime {
+    font-size: 10px;
+    padding-left: 1rem;
+}
+
+.threadMessages .memberName {
+    font-size: 14px;
+}
+.threadMessages p {
+    margin: 0;
+}
+
+.postButton {
+    position: relative;
+}
+.postButton .btn {
+    position: absolute;
+    right: 0;
+    
+}
+
+
 /* ------------------ common_validation ------------------ー */
 .error {
     color: tomato;
@@ -69,13 +122,22 @@ img{
 
 
 
+/* ------------------ responsive ------------------ー */
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
+    .navbar-brand {
+        margin: 0!important
+    }
     .topTitle{
         font-size: 2rem;
     }
     .main {
       background-position: center;
       padding: 1rem;
+    }
+    /* ------- thread.php ----------- */
+    .threadMessages img {
+        width: 10%;
+        
     }
 }
