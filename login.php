@@ -20,7 +20,7 @@ if(!empty($_POST)) {
         $memberInfo = $loginInfo->fetch();
 
         if ($memberInfo) {
-            // $_SESSION['id'] = $memberInfo['id'];
+            $_SESSION['id'] = $memberInfo['id'];
             header('Location: index.php');
             exit();
         }else {
