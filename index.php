@@ -34,8 +34,8 @@ $posts = $db->query('SELECT m.name, m.picture, p.* FROM members m, posts p WHERE
         <div class="col-md-6">
             <form action="" method="post">
               <div class="form-group">
-                <label for="inputMessage">メッセージを入力</label>
-                <textarea class="form-control" id="inputMessage" rows="3" maxlength="255" name="message"></textarea>
+                <dd class="font-weight">こんにちは！ <?php echo($member['name']); ?>さん</dd>
+                <textarea class="form-control" placeholder="ここに自由に記述してみてください！" rows="3" maxlength="255" name="message"></textarea>
                 <div class="postButton"><button type="submit" class="btn btn-primary mt-3">投稿する</button></div>
               </div>
             </form>
@@ -46,7 +46,7 @@ $posts = $db->query('SELECT m.name, m.picture, p.* FROM members m, posts p WHERE
             <?php foreach($posts as $post): ?>
             <div class="threadArea">
                 <div class="threadMessages">
-                    <img src="./img/cat.png"  alt="">
+                    <img src="./user_profile/<?php echo(htmlspecialchars($post['picture'], ENT_QUOTES)); ?>"  alt="">
                     <p class="memberName"> : <?php echo(htmlspecialchars($post['name'], ENT_QUOTES)); ?> </p>
                     <p class="messageTime">投稿日時: 2020/07/05/20:45</p>
                     <ul>

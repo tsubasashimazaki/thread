@@ -1,7 +1,7 @@
 body {
     height: 100vh;
     font-family:  sans-serif;
-    background-color: #dbdef0;
+    background-color: #e2eba3;
     line-height: 1.8;
 }
 p {font-family: sans-serif;font-size: 20px;}
@@ -23,7 +23,7 @@ img{
     margin-left: .5rem;
 }
 .bg-light {
-    background-color: #4699ca!important;
+    background-color: #3aacad!important;
 }
 
 .navbar-brand {
@@ -93,6 +93,7 @@ img{
 }
 .threadMessages img {
     width: 5%;
+    border-radius: 50px;
     
 }
 
