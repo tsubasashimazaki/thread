@@ -26,7 +26,7 @@ if(!empty($_POST)) {
         }else {
             $error['login'] = 'mistake';
         }
-    }
+    } 
 }
 
 ?>
@@ -61,6 +61,8 @@ if(!empty($_POST)) {
                 <?php endif; ?>
             </div>
             <button type="submit" class="btn btn-primary mt-3">ログインする</button>
+            <a href="add.php" class="addMember">アカウントをお持ちでない方はこちら</あ>
+
         </form>
     </div>
 </div>

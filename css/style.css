@@ -11,7 +11,7 @@ img{
     height: auto;
 }
 
-/* ーーーー　header.php　ーーーーー */
+/* ------------------ header.php ------------------ー */
 .threadIcon {
     margin-left: .5rem;
 }
@@ -22,7 +22,7 @@ img{
     color: #fff!important;
 }
 
-/* ーーーー　top.php　ーーーーー */
+/* ------------------ top.php ------------------ー */
 .main {
     background-image: url(../img/bg-ground.png);
     background-size: cover;
@@ -46,22 +46,27 @@ img{
     margin: 0;
 }
 
-/* ーーーー　add.php　ーーーーー */
+/* ------------------ add.php ------------------ー */
 .btn-primary {
     background-color: #4699ca;
     border-color: #4699ca;
 }
-/* ーーーー　confirm.php　ーーーーー */
+/* ------------------ confirm.php ------------------ー */
 .historyBack {
     color: #fff!important;
     text-decoration: none!important;
 }
-
-/* ーーーー　validation　ーーーーー */
+/* ------------------ login.php ------------------ー */
+.addMember {
+    display: block;
+    padding-top: 1.5rem;
+}
+/* ------------------ common_validation ------------------ー */
 .error {
     color: tomato;
     font-size: 14px;
 }
+
 
 
 
