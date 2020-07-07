@@ -77,7 +77,7 @@ img{
 }
 
 
-/* ------------------ thread.php ------------------ー */
+/* ------------------ index.php ------------------ー */
 .threadContent {
     padding-top: 5rem;
 }
@@ -128,9 +128,12 @@ img{
 .delete:visited {
     color: tomato;
 }
-
+.details,
 .update {
     font-size: 12px;
+}
+.userMessage {
+    font-size: 16px;
 }
 
 

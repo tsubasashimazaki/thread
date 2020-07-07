@@ -50,6 +50,8 @@ $posts = $db->query('SELECT m.name, m.picture, p.* FROM members m, posts p WHERE
                     <p class="memberName"> : <?php echo(htmlspecialchars($post['name'], ENT_QUOTES)); ?> </p>
                     <p class="messageTime">投稿日時: 2020/07/05/20:45</p>
                     <ul>
+                        <a href="details.php" class="details">返信</a>
+                        |
                         <a href="#" class="update">編集</a>
                         |
                         <a href="#" class="delete">削除</a>

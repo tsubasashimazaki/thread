@@ -47,8 +47,8 @@ if (!empty($_POST)) { //送信ボタンを押したかの判断
             <img src="./user_profile/<?php echo(htmlspecialchars($_SESSION['add']['image'], ENT_QUOTES)); ?>" alt="">                
             </div>
 
-        <button type="submit" class="btn btn-success mt-3"><a href="add.php?action=historyBack" class="historyBack">一つ前の画面に戻る</a></button>
-        <button type="submit" class="btn btn-primary mt-3">こちらの内容で登録する</button>
+        <button type="submit" class="btn btn-success mt-2 mb-5"><a href="add.php?action=historyBack" class="historyBack">一つ前の画面に戻る</a></button>
+        <button type="submit" class="btn btn-primary mt-2 mb-5">こちらの内容で登録する</button>
         </form>
     </div>
 </div>
